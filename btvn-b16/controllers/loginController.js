@@ -9,18 +9,21 @@ module.exports = {
         title: req.flash("title"),
       });
     } else if (email !== "admin@gmail.com" || password !== "123456") {
+      req.flash("title", "email hoặc mật khẩu sai");
       res.render("login/index", {
-        title: "email hoặc mật khẩu sai",
+        title: req.flash("title"),
       });
+    } else if (email === undefined && password === undefined) {
     }
   },
   handleLogin: (req, res) => {
     const { email, password } = req.body;
+    s;
     console.log(req.body);
-    console.log(email, password);
 
     req.session.email = email;
     req.session.password = password;
+    console.log(email, password);
     return res.redirect("/login");
   },
 };

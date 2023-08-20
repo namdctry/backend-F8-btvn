@@ -9,7 +9,7 @@ module.exports = {
   },
   handleLogOut: (req, res) => {
     const { email, password } = req.session;
-    console.log(email, password);
+    // console.log(email, password);
     delete req.session.email;
     delete req.session.password;
     req.flash("title", `Đăng xuất thành công`);
