@@ -12,7 +12,8 @@ module.exports = {
     // console.log(email, password);
     delete req.session.email;
     delete req.session.password;
-    req.flash("title", `Đăng xuất thành công`);
-    res.render("login/index", { title: req.flash("title") });
+    res.redirect("/login");
+    // req.flash("title", `Đăng xuất thành công`);
+    // res.render("login/index", { title: req.flash("title") });
   },
 };
