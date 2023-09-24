@@ -20,6 +20,7 @@
     </div>
   </div>
 </form>
+<form action="/customers/delete-item" onsubmit="return confirm('Bạn có chắc chắn xóa hết?')" method="post">
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -60,7 +61,10 @@
     }) %>
 
   </tbody>
+  <button class="btn btn-danger btn-sm" type="submit">Xóa các mục đã chọn</button>
 </table>
+</form>
+
 <% if (totalPage > 1) { %>
 <nav class="d-flex justify-content-end">
   <ul class="pagination">
@@ -78,7 +82,3 @@
   </ul>
 </nav>
 <% } %>
-
-<form action="/customers/delete-item" onsubmit="return confirm('Bạn có chắc chắn xóa hết?')" method="post">
-  <button class="btn btn-danger btn-sm" type="submit">Xóa các mục đã chọn</button>
-</form>

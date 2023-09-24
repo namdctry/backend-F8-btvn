@@ -186,6 +186,16 @@ module.exports = {
     console.log(req.body.selectedItems);
     console.log("096049048906080406");
 
-    res.send("hello");
+    const idsToDelete = [req.body.selectedItems];
+    await Customer.destroy({
+      where: {
+        id: {
+          [Op.in]: idsToDelete,
+        },
+      },
+      force: false,
+    });
+    req.flash("msg", "Xóa thành công");
+    res.redirect("/customers");
   },
 };
