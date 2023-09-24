@@ -10,7 +10,7 @@ const md5 = require("md5");
 module.exports = {
   index: async (req, res) => {
     const { keyword, status } = req.query;
-    console.log(req.query);
+    // console.log(req.query);
     const customer = await Customer;
     const filters = {};
     if (status === "active" || status === "inactive") {
@@ -40,7 +40,7 @@ module.exports = {
     const totalPage = Math.ceil(totalCount / PER_PAGE);
 
     let { page } = req.query;
-    console.log(req.query);
+    // console.log(req.query);
     if (page < 1 || page > totalPage || !page) {
       page = 1;
     }
@@ -82,8 +82,6 @@ module.exports = {
       // console.log("Khong co loi");
       const customer = await Customer;
       req.body.password = md5(req.body.password);
-      console.log(99999999);
-      console.log(req.body);
       customer.create(req.body);
       req.flash("msg", "them khach hang thanh cong");
       res.redirect("/customers");
@@ -99,8 +97,6 @@ module.exports = {
     // console.log(id);
     const province = await Province;
     const provinceList = await province.findAll();
-    console.log(5555555555555);
-    console.log(provinceList);
     const customerDb = await Customer;
     const customer = await customerDb.findByPk(id);
     const errors = req.flash("errors");
@@ -115,8 +111,14 @@ module.exports = {
   },
   handleUpdate: async (req, res) => {
     const errors = validationResult(req);
+    console.log(req);
+    console.log(req.body);
+    console.log(222222222222);
     const { id } = req.query;
+    console.log(`log danh sach loi`);
     console.log(errors);
+    console.log(errors.array());
+    // console.log(req);
     if (errors.isEmpty()) {
       const { name, email, password, status, province_id } = req.body;
       const customerDb = await Customer;
@@ -138,10 +140,9 @@ module.exports = {
       );
       await customer.save();
       req.flash("msg", `sua khach hang ${customer.name} thanh cong`);
-      res.redirect("/customers");
+      res.redirect(`/customers/update?id=${id}`);
     } else {
       req.flash("errors", errors.array());
-      console.log(333333333333);
       // console.log(req.body);
       req.flash("msg", "vui long nhap day du thong tin");
       res.redirect(`/customers/update?id=${id}`);
