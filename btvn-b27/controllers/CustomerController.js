@@ -1,5 +1,9 @@
 // const {} = require("../models");
-const { Customer, Province } = require("../models");
+// const { Customer, Province } = require("../models");
+const model = require("../models/index");
+const Customer = model.Customer;
+const Province = model.Province;
+const User = model.User;
 const moment = require("moment");
 const { Op } = require("sequelize");
 // const { PER_PAGE } = process.env;
@@ -14,7 +18,6 @@ module.exports = {
     const { keyword, status } = req.query;
     const PER_PAGE = 3;
     //
-
     const filters = {};
     if (status === "active" || status === "inactive") {
       filters.status = status === "active" ? 1 : 0;
@@ -35,10 +38,20 @@ module.exports = {
       ];
     }
 
+    const user_id = req.session.userLogin.id;
+
+    const roleUser = req.session.userLogin.role;
+
+    let whereCondition = { ...filters, user_id: user_id };
+    if (roleUser === 1) {
+      whereCondition = { ...filters };
+    }
     //Lấy tổng số bản ghi
+
     const totalCountObj = await Customer.findAndCountAll({
-      where: filters,
+      where: whereCondition,
     });
+    console.log(totalCountObj);
 
     const totalCount = totalCountObj.count;
 
@@ -53,18 +66,22 @@ module.exports = {
 
     //Tính offset
     const offset = (page - 1) * PER_PAGE;
-    console.log(2222222222222);
     const customerList = await Customer.findAll({
       // attributes: ["id", "name", "email", "status"],
       order: [
         ["createdAt", "DESC"],
         ["name", "ASC"],
       ],
-      where: filters,
+      where: whereCondition,
       limit: +PER_PAGE,
       offset: offset,
+      include: [
+        {
+          model: User,
+          as: "user", // Tên biệt danh (alias) bạn đã đặt trong mối quan hệ
+        },
+      ],
     });
-    console.log(2222222222222);
 
     const msg = req.flash("msg");
 
@@ -76,16 +93,17 @@ module.exports = {
       page,
       getPaginateUrl,
       msg,
+      roleUser,
     });
   },
 
   //Get Form
   create: async (req, res) => {
-    console.log(1111111111111);
-    console.log(await Customer);
-    console.log(await Province);
-    console.log(await Province.findAll());
-    console.log(1111111111111);
+    // console.log(1111111111111);
+    // console.log(await Customer);
+    // console.log(await Province);
+    // console.log(await Province.findAll());
+    // console.log(1111111111111);
     const provinceList = await Province.findAll();
     const msg = req.flash("msg");
     const errors = req.flash("errors");
@@ -100,7 +118,8 @@ module.exports = {
       //Thêm dữ liệu
 
       req.body.password = md5(req.body.password);
-      Customer.create(req.body);
+      const user_id = req.session.userLogin.id;
+      Customer.create({ ...req.body, user_id: user_id });
       req.flash("msg", "Thêm khách hàng thành công");
       res.redirect("/customers");
     } else {

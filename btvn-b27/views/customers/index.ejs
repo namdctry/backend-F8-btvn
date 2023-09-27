@@ -32,6 +32,9 @@
       <th>Email</th>
       <th width="10%">Trạng thái</th>
       <th width="10%">Thời gian</th>
+      <% if (roleUser === 1) { %>
+      <th width="10%">Người thêm</th>
+      <%  } %>
       <th width="5%">Sửa</th>
       <th width="5%">Xóa</th>
     </tr>
@@ -48,6 +51,9 @@
       <td><%= customer.email %></td>
       <td><%= customer.status === 1 ? 'Active': 'Inactive' %></td>
       <td><%= moment(customer.created_at).format('DD/MM/YYYY hh:mm:ss') %></td>
+      <% if (roleUser === 1) { %>
+      <th width="10%"><%= customer.user.name%></th>
+      <%  } %>
       <td>
         <a href="/customers/edit/<%= customer.id %>" class="btn btn-warning btn-sm">Sửa</a>
       </td>
@@ -82,3 +88,5 @@
   </ul>
 </nav>
 <% } %>
+
+<a href="/auth/logout" class="btn btn-primary mb-2">Đăng Xuất</a>

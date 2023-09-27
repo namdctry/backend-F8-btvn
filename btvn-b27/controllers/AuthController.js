@@ -1,30 +1,29 @@
-const User = require("../models/User");
+const model = require("../models/index");
+const User = model.User;
 const md5 = require("md5");
 
 module.exports = {
   index: async (req, res) => {
     const msg = req.flash("msg");
-    console.log(111111111111111111111111);
-    console.log(req.body);
+    // console.log(req.body);
     res.render("auth/login", { msg });
+    // res.send("hello");
   },
 
   handeLogin: async (req, res) => {
     const { email, password } = req.body;
+    console.log(`hande login`);
+    console.log(req.body);
     const user = await User.findOne({
       where: { email, password: md5(password) },
     });
-    if (user?.dataValues && user.status === 1) {
+    if (user?.dataValues) {
       //login success
       req.session.userLogin = user.dataValues;
-    } else if (user?.dataValues && user.status === 0) {
-      req.flash("msg", "tài khoản chưa được kích hoạt");
     } else {
       //login failed
       req.flash("msg", "Email hoặc mật khẩu không chính xác");
     }
-    console.log("41650605");
-    console.log(req.session);
 
     res.redirect("/auth/login");
   },
