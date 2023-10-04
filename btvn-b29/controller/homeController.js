@@ -31,7 +31,7 @@ module.exports = {
       from: `"NGUYEN NAM" ${process.env.MAIL_USERNAME}`, // sender address
       to: email, // list of receivers
       subject: title, // Subject line
-      html: `<p>Hello</p><img src="http://127.0.0.1:3001/home/track/this/image/gicungdc.jpg" alt="anh loi" width="1" height="1" ><p>${content}</p>`, // html body
+      html: `<p>Hello</p><img src="http://127.0.0.1:${process.env.PORT}/home/track/this/image/gicungdc.jpg" alt="anh loi" width="1" height="1" ><p>${content}</p>`, // html body
     };
     await transporter.sendMail(mailOptions);
 
