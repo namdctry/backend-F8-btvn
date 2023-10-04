@@ -1,0 +1,41 @@
+<div class="text-center">Send Mail</div>
+<form action="" method="post">
+  <div class="mb-3">
+    <label for="">Email gửi đến</label>
+    <input type="email" name="email" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label for="">Tiêu đề</label>
+    <input type="text" name="title" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label for="">Nội dung</label>
+    <input type="text" name="content" class="form-control" />
+  </div>
+  <div class="d-grid py-10">
+    <button type="submit" class="btn btn-primary">Gửi</button>
+  </div>
+</form>
+<div class="mt-5">Lịch sử gửi mail</div>
+<table class="table-bordered">
+  <thead>
+    <tr>
+      <th>Email gửi đến</th>
+      <th>Tiêu đề</th>
+      <th>Trạng thái</th>
+      <th>Thời gian gửi</th>
+      <th>Chi tiết</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% infoEmail.forEach(email=> {%>
+    <tr>
+      <th><%= email.toEmail %></th>
+      <th><%= email.title %></th>
+      <th><%= email.status %></th>
+      <th><%= moment(email.createdAt).format('DD/MM/YYYY hh:mm:ss')%></th>
+      <th><%= email.content %></th>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
