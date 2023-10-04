@@ -57,3 +57,5 @@ DELETE FROM customers WHERE id = 4;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+
+DROP DATABASE nam_baitap26nam_baitap27f8_backend_clif8_backend_clif8_backend_clif8_backend_clif8_backend_clif8_backend_clicustomersusersf8_authentication_01users
