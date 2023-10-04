@@ -10,6 +10,11 @@ module.exports = {
     console.log(infoEmail);
     res.render("home/home", { infoEmail, moment });
   },
+  detail: async (req, res) => {
+    const id = req.params.id;
+    const detailEmail = await sendEmail.findOne({ id });
+    res.render("home/detail", { detailEmail, moment });
+  },
   handleSend: async (req, res) => {
     const { email, title, content } = req.body;
 

@@ -1,0 +1,20 @@
+<table class="table-bordered">
+  <thead>
+    <tr>
+      <th>Email gửi đến</th>
+      <th>Tiêu đề</th>
+      <th>Trạng thái</th>
+      <th>Thời gian gửi</th>
+      <th>Nội dung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><%= detailEmail.toEmail %></th>
+      <th><%= detailEmail.title %></th>
+      <th><%= detailEmail.status === 1 ? 'Đã xem': "Chưa xem" %></th>
+      <th><%= moment(detailEmail.createdAt).format('DD/MM/YYYY hh:mm:ss')%></th>
+      <th><%= detailEmail.content %></th>
+    </tr>
+  </tbody>
+</table>
