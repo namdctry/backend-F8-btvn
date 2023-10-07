@@ -5,7 +5,7 @@ const env = process.env.NODE_ENV || "development";
 
 module.exports = {
   sendActivationEmail: async (email, token) => {
-    const { MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASS, MAIL_FROM } =
+    const { MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASS, MAIL_FROM, PORT } =
       process.env;
     const transporter = nodemailer.createTransport({
       host: MAIL_HOST,
@@ -17,13 +17,13 @@ module.exports = {
         pass: MAIL_PASS,
       },
     });
-    const activationLink = `http://127.0.0.1:3001/signUp/active/${token}`;
+    const activationLink = `http://127.0.0.1:${PORT}/auth/reset-password/${token}`;
 
     const mailOption = {
-      from: `"hhiihihi" <${MAIL_FROM}>`, // sender address
+      from: `"Nam hehe" <${MAIL_FROM}>`, // sender address
       to: `${email}`, // list of receivers
-      subject: "Hello ✔", // Subject line
-      text: `Vui lòng kích hoạt tài khoản tại đây ${activationLink}`, // plain text body
+      subject: "Lấy lại mật khẩu", // Subject line
+      text: `Vui lòng click vào đây để lấy lại mật khẩu ${activationLink}`, // plain text body
       // html: "<b>Hello world?</b>", // html body
     };
     await transporter.sendMail(mailOption);

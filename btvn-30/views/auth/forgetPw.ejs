@@ -1,0 +1,12 @@
+<h1>Lấy lại mật khẩu</h1>
+<% if(msg?.length){ %>
+<div class="alert alert-danger text-center"><%= msg %></div>
+<% } %>
+<form action="" method="post">
+  <label for="">Nhập email để lấy lại mật khẩu</label>
+  <input type="text" name="email" class="form-control" placeholder="email..." />
+
+  <div class="d-grid mt-3">
+    <button type="submit" class="btn btn-primary">Quên mật khẩu</button>
+  </div>
+</form>

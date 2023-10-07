@@ -1,0 +1,17 @@
+<h1>Cập nhật mật khẩu mới</h1>
+<% if(msg?.length){ %>
+<div class="alert alert-danger text-center"><%= msg %></div>
+<% } %>
+<form action="" method="post">
+  <label for="">Nhập mật khẩu mới</label>
+  <input
+    type="password"
+    name="password"
+    class="form-control"
+    placeholder="Mật khẩu..."
+  />
+
+  <div class="d-grid mt-3">
+    <button type="submit" class="btn btn-primary">Xác nhận</button>
+  </div>
+</form>

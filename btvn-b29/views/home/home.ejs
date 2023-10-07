@@ -32,9 +32,13 @@
     <tr>
       <th><%= email.toEmail %></th>
       <th><%= email.title %></th>
-      <th><%= email.status %></th>
+      <th><%= email.status === 1 ? "Đã xem" :"Chưa xem" %></th>
       <th><%= moment(email.createdAt).format('DD/MM/YYYY hh:mm:ss')%></th>
-      <th><%= email.content %></th>
+      <th>
+        <a href="/home/<%= email.id %>">
+          <button class="btn btn-primary">Xem chi tiết</button>
+        </a>
+      </th>
     </tr>
     <% }) %>
   </tbody>

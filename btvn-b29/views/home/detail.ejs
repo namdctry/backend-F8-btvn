@@ -1,0 +1,24 @@
+<div>Xem chi tiết</div>
+<table class="table-bordered mb-3 mt-3">
+  <thead>
+    <tr>
+      <th>Email gửi đến</th>
+      <th>Tiêu đề</th>
+      <th>Trạng thái</th>
+      <th>Thời gian gửi</th>
+      <th>Nội dung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><%= email.toEmail %></th>
+      <th><%= email.title %></th>
+      <th><%= email.status %></th>
+      <th><%= moment(email.createdAt).format('DD/MM/YYYY hh:mm:ss')%></th>
+      <th><%= email.content %></th>
+    </tr>
+  </tbody>
+</table>
+<a href="/home">
+  <button class="btn btn-primary">Trang chủ</button>
+</a>

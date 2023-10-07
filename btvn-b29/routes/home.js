@@ -3,6 +3,7 @@ var router = express.Router();
 const homeController = require("../controller/homeController");
 /* GET home page. */
 router.get("/", homeController.index);
+router.get("/:id", homeController.detail);
 router.post("/", homeController.handleSend);
 router.get("/track/this/image/:param", homeController.sendTrack);
 

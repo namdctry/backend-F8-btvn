@@ -10,6 +10,11 @@ module.exports = {
     console.log(infoEmail);
     res.render("home/home", { infoEmail, moment });
   },
+  detail: async (req, res) => {
+    const id = req.params.id;
+    const email = await sendEmail.findByPk(id);
+    res.render("home/detail", { email, moment });
+  },
   handleSend: async (req, res) => {
     const { email, title, content } = req.body;
 
@@ -26,6 +31,7 @@ module.exports = {
       from: `"NGUYEN NAM" ${process.env.MAIL_USERNAME}`, // sender address
       to: email, // list of receivers
       subject: title, // Subject line
+
       html: `<p>Hello</p><img src="http://127.0.0.1:3001/home/track/this/image/gicungdc.jpg" alt="anh loi" width="1" height="1" ><p>${content}</p>`, // html body
     };
     await transporter.sendMail(mailOptions);
