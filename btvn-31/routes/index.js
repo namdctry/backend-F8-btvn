@@ -10,7 +10,8 @@ const isLogout = (req, res, next) => {
 };
 
 router.get("/", isLogout, function (req, res, next) {
-  console.log(req.user);
+  // console.log(req.user);
+  console.log(`dag log github ___________________________`);
   res.render("index", { title: "Express", user: req.user });
 });
 

@@ -42,4 +42,14 @@ router.get(
     successRedirect: "/",
   })
 );
+
+router.get("/github/redirect", passport.authenticate("github"));
+router.get(
+  "/github/callback",
+  passport.authenticate("github", {
+    failureRedirect: "/auth/login",
+    failureMessage: true,
+    successRedirect: "/",
+  })
+);
 module.exports = router;

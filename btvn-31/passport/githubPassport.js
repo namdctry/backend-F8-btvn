@@ -1,24 +1,22 @@
-var FacebookStrategy = require("passport-facebook");
-
 const model = require("../models/index");
 const Provider = model.Provider;
 const User = model.User;
-module.exports = new FacebookStrategy(
+const GithubStrategy = require("passport-github");
+
+module.exports = new GithubStrategy(
   {
-    clientID: process.env["FACEBOOK_CLIENT_ID"],
-    clientSecret: process.env["FACEBOOK_CLIENT_SECRET"],
-    callbackURL: process.env.FACEBOOK_CLIENT_URL,
-    state: true,
-    enableProof: true,
-    profileFields: ["emails", "displayName", "name"],
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: process.env.GITHUB_CLIENT_URL,
+    scope: ["email", "username", "_raw"],
   },
   async (accessToken, refreshToken, profile, cb) => {
-    const { displayName, emails, profileUrl } = profile;
+    const { displayName, username, _raw } = profile;
     // const [{ value: email }] = emails;
+    console.log(_raw);
     console.log(1111111111111111111);
-    console.log(emails);
     console.log(profile);
-    const provider = "facebook";
+    const provider = "github";
     let providerDetail = await Provider.findOne({
       where: {
         name: provider,
@@ -40,7 +38,7 @@ module.exports = new FacebookStrategy(
     });
     if (!user) {
       user = await User.create({
-        name: displayName,
+        name: username,
         provider_id: providerId,
       });
     }
