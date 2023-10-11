@@ -1,0 +1,42 @@
+<h1 class="text-center">Đăng nhập</h1>
+<%- msg.length ? `
+<div class="alert alert-danger">${msg}</div>
+`: "" %>
+<form action="" method="post">
+  <div class="mb-3">
+    <label for="">email</label>
+    <input
+      type="email"
+      name="email"
+      class="form-control"
+      placeholder="gmail..."
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="">Mat khau</label>
+    <input
+      type="password"
+      name="password"
+      class="form-control"
+      placeholder="mat khau..."
+      required
+    />
+  </div>
+  <div class="d-grid">
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </div>
+  <div class="d-grid">
+    <a href="/auth/google/redirect" class="btn btn-danger mt-3"
+      >Sign in with google</a
+    >
+  </div>
+  <div class="d-grid">
+    <a class="btn btn-primary mt-3" href="/auth/facebook/redirect"
+      >Sign in with Facebook</a
+    >
+  </div>
+  <div>
+    <a href="/auth/register">Sign up</a>
+  </div>
+</form>
