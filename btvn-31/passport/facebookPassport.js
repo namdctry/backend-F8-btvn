@@ -10,13 +10,13 @@ module.exports = new FacebookStrategy(
     callbackURL: process.env.FACEBOOK_CLIENT_URL,
     state: true,
     enableProof: true,
-    profileFields: ["emails", "displayName", "name"],
+    profileFields: ["email", "displayName", "name"],
   },
   async (accessToken, refreshToken, profile, cb) => {
-    const { displayName, emails, profileUrl } = profile;
+    const { displayName, email, profileUrl } = profile;
     // const [{ value: email }] = emails;
     console.log(1111111111111111111);
-    console.log(emails);
+    console.log(email);
     console.log(profile);
     const provider = "facebook";
     let providerDetail = await Provider.findOne({

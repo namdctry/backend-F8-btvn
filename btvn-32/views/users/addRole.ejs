@@ -1,0 +1,43 @@
+<h3>Set up Roles</h3>
+<%- msg.length ? `
+<div class="alert alert-danger">${msg}</div>
+`: "" %>
+
+<form action="" method="post">
+  <input
+    type="text"
+    name="name"
+    class="form-control mb-3"
+    placeholder="Role name...."
+  />
+  <table class="table-bordered table">
+    <thead>
+      <tr>
+        <th width="20%">Module</th>
+        <th>Permission</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Users management</td>
+        <td>
+          <div class="row">
+            <div class="col-3">
+              <input type="checkbox" name="permissions" value="view" />View
+            </div>
+            <div class="col-3">
+              <input type="checkbox" name="permissions" value="add" />Add
+            </div>
+            <div class="col-3">
+              <input type="checkbox" name="permissions" value="edit" />Edit
+            </div>
+            <div class="col-3">
+              <input type="checkbox" name="permissions" value="delete" />Delete
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

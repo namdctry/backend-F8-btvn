@@ -8,13 +8,14 @@ module.exports = new GithubStrategy(
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: process.env.GITHUB_CLIENT_URL,
-    scope: ["email", "username", "_raw"],
+    profileFields: ["email", "username", "_raw"],
   },
   async (accessToken, refreshToken, profile, cb) => {
     const { displayName, username, _raw } = profile;
     // const [{ value: email }] = emails;
-    console.log(_raw);
-    console.log(1111111111111111111);
+    // console.log(_raw);
+    // console.log(1111111111111111111);
+    // console.log(username);
     console.log(profile);
     const provider = "github";
     let providerDetail = await Provider.findOne({

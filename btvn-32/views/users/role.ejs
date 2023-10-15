@@ -1,0 +1,45 @@
+<h3>List Users management</h3>
+<a href="/users/role/add" class="btn btn-primary">Add</a>
+<hr />
+<table class="table table-bordered">
+  <thead>
+    <th width="20%">Name</th>
+    <th>Role</th>
+    <th width="10%">Edit</th>
+    <th width="10%">Delete</th>
+  </thead>
+  <tbody>
+    <% role.forEach(({name, id}) => { %>
+    <tr>
+      <td><%= name %></td>
+      <td>
+        <div class="row">
+          <div class="col-3">
+            <input type="checkbox" name="permission" value="role.view" />View
+          </div>
+          <div class="col-3">
+            <input type="checkbox" name="permission" value="role.add" />Add
+          </div>
+          <div class="col-3">
+            <input type="checkbox" name="permission" value="role.edit" />Edit
+          </div>
+          <div class="col-3">
+            <input
+              type="checkbox"
+              name="permission"
+              value="role.delete"
+            />Delete
+          </div>
+        </div>
+      </td>
+      <td>
+        <a href="/users/role/edit/<%= id %>" class="btn btn-warning">Edit</a>
+      </td>
+      <td>
+        <a href="" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+
+    <% }) %>
+  </tbody>
+</table>

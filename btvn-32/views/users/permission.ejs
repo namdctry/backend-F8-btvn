@@ -1,0 +1,56 @@
+<h2>Decentralization</h2>
+<form action="" method="post">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th width="20%">Module</th>
+        <th>Permission</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>User management</td>
+        <td>
+          <div class="row">
+            <div class="col">
+              <label for="">
+                <input
+                  type="checkbox"
+                  name="permission"
+                  value="users.read"
+                />View
+              </label>
+            </div>
+
+            <div class="col">
+              <label for="">
+                <input type="checkbox" name="permission" value="users.add" />Add
+              </label>
+            </div>
+
+            <div class="col">
+              <label for="">
+                <input
+                  type="checkbox"
+                  name="permission"
+                  value="users.update"
+                />Edit
+              </label>
+            </div>
+
+            <div class="col">
+              <label for="">
+                <input
+                  type="checkbox"
+                  name="permission"
+                  value="users.delete"
+                />Delete
+              </label>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" type="submit">Save</button>
+</form>
