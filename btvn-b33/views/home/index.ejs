@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <h2 class="text-center">FREE URL SHORTENER</h2>
+    <%- msg.length ? `
+    <div class="alert alert-success">${msg}</div>
+    `: "" %>
+
+    <form action="" method="post">
+      <div class="d-flex justify-content-evenly mb-5">
+        <input
+          type="text"
+          name="originalUrl"
+          class="form-control m-3"
+          placeholder="Enter link here..."
+        />
+        <div class="ml-2">
+          <button class="btn btn-primary m-3" type="submit">Shorten URL</button>
+        </div>
+      </div>
+    </form>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Seri</th>
+          <th>OriginalUrl</th>
+          <th>ShortUrl</th>
+          <th>Clicked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% links.forEach(({originalUrl, shortUrl, clicks}, index) =>{ %>
+        <tr>
+          <td><%= index+1 %></a></td>
+          <td><a href="<%= originalUrl %>"><%= originalUrl %></a></td>
+          <td><a href="<%= originalUrl %>"><%= shortUrl %></a></td>
+          <td><%= clicks %></a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>

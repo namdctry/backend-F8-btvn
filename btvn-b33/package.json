@@ -1,11 +1,12 @@
 {
-  "name": "express-permission",
+  "name": "btvn-b33",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node --watch ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -14,16 +15,16 @@
     "express": "~4.16.1",
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.3",
-    "flash": "^1.1.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "mysql2": "^3.6.1",
+    "mysql2": "^3.6.2",
+    "nanoid": "^5.0.2",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^6.33.0"
+    "sequelize": "^6.33.0",
+    "uid2": "^1.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1",
     "sequelize-cli": "^6.6.1"
   }
 }

@@ -61,11 +61,20 @@ module.exports = {
     }
   },
 
-  editRole: (req, res) => {
+  editRole: async (req, res) => {
     const msg = req.flash("msg");
-
     const id = req.params.id;
-    console.log(id);
-    res.render("users/editRole", { msg });
+    const role = await Role.findByPk(id, { include: Permission });
+    console.log(role);
+    console.log(888);
+    const roleName = role.name;
+    console.log(roleName);
+    let permissions = await role.Permissions;
+    console.log(99);
+    console.log(permissions);
+    const permissionList = permissions.map((permission) => {
+      return permission.dataValues.value;
+    });
+    res.render("users/editRole", { msg, permissionList, roleName });
   },
 };

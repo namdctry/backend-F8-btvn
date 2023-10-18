@@ -2,6 +2,7 @@ const model = require("../models/index");
 const User = model.User;
 module.exports = {
   login: async (req, res) => {
+    console.log(111111);
     const msg = req.flash("error");
     console.log(msg);
     res.render("auth/login", { msg });
