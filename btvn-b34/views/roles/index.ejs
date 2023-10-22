@@ -1,0 +1,33 @@
+<h2>Quản lý Roles</h2>
+
+<% if (roleUtil.checkAction(permissionList,"users.add")) { %>
+<a href="/roles/add" class="btn btn-primary mb-2">Thêm mới11</a>
+<% } %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Tên</th>
+      <% if (roleUtil.checkAction(permissionList,"users.update")) { %>
+      <th width="5%">Sửa</th>
+      <% } %> <% if (roleUtil.checkAction(permissionList,"users.delete")) { %>
+      <th width="5%">Xóa</th>
+      <% } %>
+    </tr>
+  </thead>
+  <tbody>
+    <% roles.forEach(({id, name}) => { %>
+    <tr>
+      <td><%= name %></td>
+      <% if (roleUtil.checkAction(permissionList,"users.update")) { %>
+      <td><a href="/roles/edit/<%= id %>" class="btn btn-warning">Sửa</a></td>
+      <% } %> <% if (roleUtil.checkAction(permissionList,"users.delete")) { %>
+      <td>
+        <a href="#" class="btn btn-danger delete-action">Xóa</a>
+      </td>
+      <form action="/roles/delete/<%= id %>" method="post"></form>
+      <% } %>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
