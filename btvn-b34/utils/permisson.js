@@ -15,8 +15,8 @@ module.exports = {
     });
   },
   hasPermission: async (req) => {
-    console.log(req);
     console.log(req.user);
+    console.log(98898989895490458);
     const { id } = req.user;
 
     const user = await User.findOne({
@@ -43,6 +43,8 @@ module.exports = {
         return role.Permissions;
       })
     );
+    // permissions = permissions.map(({ value }) => value);
+
     permissions = permissions.map((item) => {
       return item.map(({ value }) => value);
     });
