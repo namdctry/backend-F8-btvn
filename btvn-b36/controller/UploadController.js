@@ -7,10 +7,14 @@ module.exports = {
   upload: async (req, res) => {
     try {
       const user = req.user;
-      const file = req.file;
-      console.log(user.data.userId);
+      const { file } = req.body;
+      const file0000 = req.file;
+      console.log(file0000);
+      console.log(file);
+      const nameFile = file.substring(file.lastIndexOf("\\") + 1);
+      console.log(nameFile);
       const uploadedFile = await File.create({
-        filename: file.originalname,
+        filename: nameFile,
         userId: user.data.userId,
       });
 
