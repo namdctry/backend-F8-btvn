@@ -18,8 +18,8 @@ class SendMail {
     const info = await transporter.sendMail({
       from: `ng nam F8 <nam2002bv@gmail.com>`, // sender address
       to: this.job.email, // list of receivers
-      subject: `Xin chào: ${job.name}`, // Subject line
-      html: `Xin chào bạn ${job.name}, tôi đang test email`,
+      subject: `Xin chào: ${this.job.name}`, // Subject line
+      html: `Xin chào bạn ${this.job.name}, tôi đang test email`,
     });
     console.log(info);
   };

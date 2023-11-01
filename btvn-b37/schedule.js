@@ -11,8 +11,6 @@ cron.schedule("*/5 * * * * *", async () => {
   const { name, email } = JSON.parse(job.value).data.job;
   console.log(name, email);
   new SendMail({ name, email }).handle();
-  await QueueJob.destroy({
-    where: { id: 1 },
-  });
+  await job.destroy();
   console.log(22214654646);
 });
