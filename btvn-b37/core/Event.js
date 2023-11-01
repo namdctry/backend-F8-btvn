@@ -5,7 +5,7 @@
 */
 const { v4: uuid } = require("uuid");
 const model = require("../models/index");
-const QueueJob = model.QueueJob;
+const QueueJob = model.queueJob;
 class Event {
   constructor(job) {
     this.job = job;

@@ -5,6 +5,8 @@ const User = model.User;
 const BlackList = model.BlackList;
 const jwt = require("../utils/jwt");
 const { Op } = require("sequelize");
+const SendMail = require("../jobs/SendMail");
+const Event = require("../core/Event");
 
 module.exports = {
   login: async (req, res) => {
@@ -221,6 +223,52 @@ module.exports = {
       res.status(401).json({
         status: "error",
         message: "unauthorized",
+      });
+    }
+  },
+  sendMail: async (req, res) => {
+    const fakeMails = [
+      {
+        name: "Nam 1",
+        email: "nam1@gmail.com",
+      },
+      {
+        name: "Nam 2",
+        email: "nam2@gmail.com",
+      },
+      {
+        name: "Nam 3",
+        email: "nam3@gmail.com",
+      },
+      {
+        name: "Nam 4",
+        email: "nam4@gmail.com",
+      },
+      {
+        name: "Nam 5",
+        email: "nam5@gmail.com",
+      },
+    ];
+
+    try {
+      fakeMails.forEach(async (mail) => {
+        const { name, email } = mail;
+        await new Event(
+          new SendMail({
+            name,
+            email,
+          })
+        );
+      });
+
+      res.json({
+        status: "success",
+        message: "Add work success",
+      });
+    } catch (error) {
+      res.status(500).json({
+        status: "error",
+        message: "server error",
       });
     }
   },
