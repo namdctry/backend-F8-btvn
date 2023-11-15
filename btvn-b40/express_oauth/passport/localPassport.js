@@ -14,6 +14,8 @@ module.exports = new LocalStrategy(
       },
     });
     if (!user) {
+      console.log(email);
+      console.log(555555555);
       done(null, false, { message: "Email không tồn tại" });
       return;
     }
@@ -24,10 +26,10 @@ module.exports = new LocalStrategy(
         done(null, user);
         return;
       }
-
+      console.log(9999999);
       done(null, false, {
         message: "Mật khẩu không chính xác",
       });
     });
-  },
+  }
 );

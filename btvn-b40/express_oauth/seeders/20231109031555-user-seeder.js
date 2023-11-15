@@ -7,14 +7,13 @@ module.exports = {
       "users",
       [
         {
-          name: "Hoàng An",
-          email: "hoangan.web@gmail.com",
-          password: bcrypt.hashSync("123456", 10),
+          email: "nam2002@gmail.com",
+          password: bcrypt.hashSync("1", 10),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
       ],
-      {},
+      {}
     );
   },
 

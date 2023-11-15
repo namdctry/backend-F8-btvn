@@ -5,9 +5,6 @@ router.post("/auth/status", (req, res) => {
   console.log(999999);
   console.log(`route api`);
   if (req.user) {
-    console.log(999999);
-    console.log(req.user.id);
-    console.log(333333);
     res.json({
       status: "success",
       user: req.user,

@@ -3,7 +3,7 @@ var passport = require("passport");
 var router = express.Router();
 const authController = require("../controllers/auth.controller");
 var guestMiddleware = require("../middlewares/guest.middleware");
-
+var authMiddleware = require("../middlewares/auth.middleware");
 router.get("/login", guestMiddleware, authController.login);
 router.post(
   "/login",
@@ -14,13 +14,11 @@ router.post(
   }),
   authController.handleLogin
 );
-
+router.get("/2fa", authMiddleware, authController.twoFA);
+router.post("/2fa", authController.handleTwoFA);
 router.get("/redirect", (req, res) => {
+  console.log(`REDIRECT`);
   const cookie = req.cookies["connect.sid"];
-  console.log(22222);
-  console.log(req.user.id);
-  console.log(req.query.url);
-  console.log(cookie);
   res.redirect(req.query.url + "?cookie=" + cookie);
 });
 

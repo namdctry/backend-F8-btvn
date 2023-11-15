@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class LoginToken extends Model {
+  class TwoFA extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  LoginToken.init(
+  TwoFA.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -25,12 +25,12 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      token: DataTypes.STRING,
+      otp: DataTypes.INTEGER,
     },
     {
       sequelize,
-      modelName: "LoginToken",
+      modelName: "TwoFA",
     }
   );
-  return LoginToken;
+  return TwoFA;
 };
