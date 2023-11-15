@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1>SSO Client</h1>
+    <% if (user) { %>
+    <h2>
+      Chào bạn: <%= user.email %> <a href="<%= logoutUrl %>">Đăng xuất</a>
+    </h2>
+    <% } else { %>
+    <a href="<%= loginUrl %>">Đăng nhập</a>
+    <% } %>
+  </body>
+</html>
